@@ -29,7 +29,7 @@ public class Constraint {
 	public double rightCoefficient;
         
         /**
-         * Indicated the type of the constrainr, either less or equal,more or equal or equal, this constraints types are defined as class constants.
+         * Indicates the type of the constraint, either less or equal,more or equal or equal, this constraints types are defined as class constants.
          */
 	public String type;
         
@@ -87,9 +87,9 @@ public class Constraint {
 	
         /**
          * 
-         * @param x The X coordinate to be evaluated in this constraint.
+         * @param x The X coordinate to be evaluated in this Constraint.
          * @return The value of this Constraint in the form of y=f(x).
-         * @throws Exception Exception thrown when the y value of the constraint is 0.
+         * @throws Exception Exception thrown when the y value of the Constraint is 0.
          */
         public double giveYof(double x)throws Exception{
             if(this.yCoefficient==0){
@@ -137,7 +137,7 @@ public class Constraint {
 	}
 	
         /**
-         * Gives the intersection of this Constraint wtih the given parametr Constraint.
+         * Gives the intersection of this Constraint wtih the given parameter Constraint.
          * @param c Another Constraint instance.
          * @return A Point, representing the intersection between both Constraints. Can be null.
          */

@@ -24,7 +24,7 @@ public class Model {
 	public boolean allowsNegatives;
         
         /**
-         * Represent the type of objective function of this Model, either MAXIMIZE or MINIMIZE, both class constanst.
+         * Represents the type of objective function of this Model, either MAXIMIZE or MINIMIZE, both class constants.
          */
 	public String type;
         
