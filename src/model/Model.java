@@ -2,16 +2,54 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Class representating a linear programming problem with two decision variables. 
+ * @author JUAN DAVID
+ */
 public class Model {
 	
+    /**
+     * Property of type double representing the x variable coefficient for this Model's objective function.
+     */
 	public double xCoefficient;
+        
+     /**
+     * Property of type double representing the y variable coefficient for this Model's objective function.
+     */
 	public double yCoefficient;
+        
+        /**
+         * Property indicating if this Model allows negative variable values.
+         */
 	public boolean allowsNegatives;
+        
+        /**
+         * Represent the type of objective function of this Model, either MAXIMIZE or MINIMIZE, both class constanst.
+         */
 	public String type;
+        
+        /**
+         * An ArrayList containing all Constraint instances associated to this Model.
+         */
 	public ArrayList<Constraint> constraints;
+        
+        /**
+         * Constant for objective function of type MAXIMIZE.
+         */
 	public static final String MAXIMIZE="MAXIMIZE";
+        
+          /**
+         * Constant for objective function of type MINIMIZE.
+         */
 	public static final String MINIMIZE="MINIMIZE";
 	
+        /**
+         * Creates a new Model instance with given parameters.
+         * @param xCoefficient double x coefficient for this model's objective function.
+         * @param yCoefficient double y coefficient for this model's objective function.
+         * @param allowsNegatives boolean for negative values allowance in this Model instance.
+         * @param type Objective function type for this Model instance.
+         */
 	public Model(double xCoefficient, double yCoefficient, boolean allowsNegatives, String type) {
 		super();
 		this.xCoefficient = xCoefficient;
@@ -21,14 +59,28 @@ public class Model {
 		this.constraints = new ArrayList<Constraint>();
 	}
 	
+        /**
+         * Method used to add a new Constraint instance to this Model.
+         * @param c Constraint to be added.
+         */
 	public void addConstraint(Constraint c) {
 		this.constraints.add(c);
 	}
 	
+        
+        /**
+         * Evaluates the objective function value of the given Point instance.
+         * @param p Point to be evaluated.
+         * @return A double value, the evaluation of the Point in the function of this Model.
+         */
 	public double evaluateObjetive(Point p) {
 		return this.xCoefficient*p.x + this.yCoefficient*p.y;
 	}
         
+        /**
+         * Gives an ArrayList containing all Points that are axis intersections for each Constraint in this model.
+         * @return An ArrayList of Points.
+         */
         public ArrayList<Point>giveAxisIntersections(){
             ArrayList<Point>points=new ArrayList<>();
             for (int i = 0; i < constraints.size(); i++) {
@@ -37,6 +89,10 @@ public class Model {
             return points;
         }
 	
+        /**
+         * Gives an ArrayList containing all Points that are feasible intersection Points for this Model.
+         * @return An ArrayList of Points.
+         */
 	public ArrayList<Point>giveAllFeasiblePoints(){
 		ArrayList<Point>points=new ArrayList<Point>();
 		points.add(new Point(0,0));
@@ -82,7 +138,10 @@ public class Model {
 		return points;
 	}
 	
-	
+	/**
+         * Gives a Point representing the optimum Point found within all feasible Points for this Model.
+         * @return A Point instance. Can be null.
+         */
 	public Point giveOptimumPoint() {
 		ArrayList<Point>feasiblePoints=this.giveAllFeasiblePoints();
 		Point op=null;
@@ -109,7 +168,10 @@ public class Model {
 		return op;
 	}
 	
-	
+	/**
+         * Overriden toString().
+         * @return String representation of this Model instance.
+         */
 	public String toString() {
 		String t="";
 		String separator="";

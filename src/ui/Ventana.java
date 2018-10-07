@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import model.Constraint;
 import model.Model;
 import model.Point;
@@ -300,6 +301,7 @@ public class Ventana extends javax.swing.JFrame {
                    break;
                 }
             }
+
 //javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             
     

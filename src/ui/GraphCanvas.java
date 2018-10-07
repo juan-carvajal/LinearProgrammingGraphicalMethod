@@ -156,6 +156,7 @@ public class GraphCanvas extends Canvas{
         if(cont==0){
             cont=1;
         }
+        
         Color drawColor=new Color(0,255,0,255/cont);
         
         for(Constraint c:constraints){
@@ -189,13 +190,27 @@ public class GraphCanvas extends Canvas{
                        p1=this.transformPointWithNegatives(p1, maxX, maxY);
                        p2=this.transformPointWithNegatives(p2, maxX, maxY);
                      if(c.type.equals(Constraint.LESS_OR_EQUAL)){
-                          int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                         if(c.yCoefficient>0){
+                             int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                           int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
                           g2d.fillPolygon(xs, ys,4);
-                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
-                            int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                         }else{
+                             int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                              int[]ys={(int)p1.y,(int)p2.y,10,10};
                              g2d.fillPolygon(xs, ys,4);
+                         }
+                          
+                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
+                          if(c.yCoefficient>0){
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                             int[]ys={(int)p1.y,(int)p2.y,10,10};
+                             g2d.fillPolygon(xs, ys,4);
+                          }else{
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                          int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
+                          g2d.fillPolygon(xs, ys,4);
+                          }
+                            
                       }
                        g2d.setColor(Color.black);
                        g2d.drawLine((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y);
@@ -213,13 +228,27 @@ public class GraphCanvas extends Canvas{
                        p1=this.transformPointWithNegatives(p1, maxX, maxY);
                        p2=this.transformPointWithNegatives(p2, maxX, maxY);
                         if(c.type.equals(Constraint.LESS_OR_EQUAL)){
-                          int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                            if(c.yCoefficient>0){
+                                int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                           int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
                           g2d.fillPolygon(xs, ys,4);
-                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
-                            int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                            }else{
+                                 int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                              int[]ys={(int)p1.y,(int)p2.y,10,10};
                              g2d.fillPolygon(xs, ys,4);
+                            }
+                          
+                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
+                          if(c.yCoefficient>0){
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                             int[]ys={(int)p1.y,(int)p2.y,10,10};
+                             g2d.fillPolygon(xs, ys,4);
+                          }else{
+                                int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                          int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
+                          g2d.fillPolygon(xs, ys,4);
+                          }
+                            
                       }
                         g2d.setColor(Color.black);
                        g2d.drawLine((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y);
@@ -438,13 +467,27 @@ public class GraphCanvas extends Canvas{
                        p1=this.transformPointWithoutNegatives(p1, maxX, maxY);
                        p2=this.transformPointWithoutNegatives(p2, maxX, maxY);
                      if(c.type.equals(Constraint.LESS_OR_EQUAL)){
-                          int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                         if(c.yCoefficient>0){
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                           int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
                           g2d.fillPolygon(xs, ys,4);
-                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
+                         }else{
                             int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                              int[]ys={(int)p1.y,(int)p2.y,10,10};
+                             g2d.fillPolygon(xs, ys,4); 
+                         }
+                         
+                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
+                          if(c.yCoefficient>0){
+                               int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                             int[]ys={(int)p1.y,(int)p2.y,10,10};
                              g2d.fillPolygon(xs, ys,4);
+                          }else{
+                                   int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                          int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
+                          g2d.fillPolygon(xs, ys,4);
+                          }
+                           
                       }
                        g2d.setColor(Color.black);
                        g2d.drawLine((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y);
@@ -462,13 +505,27 @@ public class GraphCanvas extends Canvas{
                        p1=this.transformPointWithoutNegatives(p1, maxX, maxY);
                        p2=this.transformPointWithoutNegatives(p2, maxX, maxY);
                         if(c.type.equals(Constraint.LESS_OR_EQUAL)){
-                          int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                            if(c.yCoefficient>0){
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                           int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
-                          g2d.fillPolygon(xs, ys,4);
-                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
-                            int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                          g2d.fillPolygon(xs, ys,4);  
+                            }else{
+                                  int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
                              int[]ys={(int)p1.y,(int)p2.y,10,10};
                              g2d.fillPolygon(xs, ys,4);
+                            }
+                          
+                      }else if(c.type.equals(Constraint.MORE_OR_EQUAL)){
+                          if(c.yCoefficient>0){
+                              int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                             int[]ys={(int)p1.y,(int)p2.y,10,10};
+                             g2d.fillPolygon(xs, ys,4); 
+                          }else{
+                                int[]xs={(int)p1.x, (int)p2.x,this.getWidth()-10,10};
+                          int[]ys={(int)p1.y,(int)p2.y,this.getHeight()-10,this.getHeight()-10};
+                          g2d.fillPolygon(xs, ys,4); 
+                          }
+                           
                       }
                         g2d.setColor(Color.black);
                        g2d.drawLine((int)p1.x, (int)p1.y, (int)p2.x, (int)p2.y);
@@ -484,7 +541,7 @@ public class GraphCanvas extends Canvas{
     
     @Override
     public void paint(Graphics g){
-       
+      
         if(model==null){
             int w=this.getWidth();
             int h=this.getHeight();
@@ -494,11 +551,11 @@ public class GraphCanvas extends Canvas{
             if(model.allowsNegatives){
             int w=this.getWidth();
             int h=this.getHeight();
-            g.setColor(Color.white);
+             g.setColor(Color.white);
             g.fillRect(0, 0, w, h);
           
             
-            ArrayList<Point> points=model.giveAxisIntersections();
+            ArrayList<Point> points=model.giveAllFeasiblePoints();
             if(points.size()>0){
                  double maxX=Double.NEGATIVE_INFINITY;
                 for (int i = 0; i < points.size(); i++) {
@@ -539,7 +596,7 @@ public class GraphCanvas extends Canvas{
             g.setColor(Color.white);
             g.fillRect(0, 0, w, h);
             
-             ArrayList<Point> points=model.giveAxisIntersections();
+             ArrayList<Point> points=model.giveAllFeasiblePoints();
              if(points.size()>0){
                  for (int i = 0; i < points.size(); i++) {
                      if(points.get(i).x<0 || points.get(i).y<0 ){
